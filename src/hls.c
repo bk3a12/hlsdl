@@ -1423,7 +1423,7 @@ int download_live_hls(write_ctx_t *out_ctx, hls_media_playlist_t *me)
             downloaded_duration_ms += ms->duration_ms;
             if (hls_args.live_duration_sec > 0 && downloaded_duration_ms > hls_args.live_duration_sec * 1000) {
                 download = false;
-                pthread_cancel(thread);
+                pthread_kill(thread,0);
                 break;
             }
 
